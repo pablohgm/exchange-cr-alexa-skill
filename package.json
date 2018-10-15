@@ -1,0 +1,51 @@
+{
+  "name": "exchange-cr-alexa-skill",
+  "version": "0.1.0",
+  "description": "Serverless node API to Costa Exchange information",
+  "main": "src/handler.js",
+  "scripts": {
+    "local": "sls offline start --noAuth",
+    "invoke": "f () { sls invoke local --verbose --function $1 --path ./events/$1.json; }; f ",
+    "lint": "eslint ./src",
+    "build": "serverless webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablohgm/exchange-cr-alexa-skill.git"
+  },
+  "keywords": [
+    "CR",
+    "Costa",
+    "Rica",
+    "exchange",
+    "alexa"
+  ],
+  "author": "pablohgm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pablohgm/exchange-cr-alexa-skill/issues"
+  },
+  "homepage": "https://github.com/pablohgm/exchange-cr-alexa-skill#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-source-map-support": "^2.0.1",
+    "eslint": "^5.7.0",
+    "eslint-loader": "^2.1.1",
+    "pre-commit": "^1.2.2",
+    "serverless-offline": "^3.27.0",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^4.20.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "exchangecr": "^0.1.8",
+    "http-status-codes": "^1.3.0",
+    "source-map-support": "^0.5.9"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}

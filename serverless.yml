@@ -1,0 +1,33 @@
+service: exchange-cr-alexa-skill
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
+package:
+  individually: true
+
+functions:
+  getStatus:
+    handler: src/handler.getStatus
+    events:
+      - http:
+          method: GET
+          path: /
+          cors: true
+  getExchange:
+    handler: src/handler.getExchange
+    events:
+      - http:
+          method: GET
+          path: /exchange
+          cors: true

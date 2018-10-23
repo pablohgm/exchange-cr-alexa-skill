@@ -1,0 +1,53 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "costa rica exchange",
+      "intents": [
+        {
+          "name": "ExchangeIntent",
+          "slots": [
+            {
+              "name": "Coin",
+              "type": "LIST_OF_COINS"
+            }
+          ],
+          "samples": [
+            "What's the {Coin} price",
+            "What's the {Coin} exchange",
+            "Exchange {Coin}",
+            "{Coin} price"
+          ]
+        },
+        {
+          "name": "AMAZON.RepeatIntent"
+        },
+        {
+          "name": "AMAZON.HelpIntent"
+        },
+        {
+          "name": "AMAZON.StopIntent"
+        },
+        {
+          "name": "AMAZON.CancelIntent"
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "us dollar"
+              }
+            },
+            {
+              "name": {
+                "value": "dollar"
+              }
+            }
+          ],
+          "name": "LIST_OF_COINS"
+        }
+      ]
+    }
+  }
+}

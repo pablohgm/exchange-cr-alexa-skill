@@ -2,7 +2,7 @@ service: exchange-cr-alexa-skill
 
 plugins:
   - serverless-webpack
-  - serverless-offline
+  - serverless-alexa-skills
 
 provider:
   name: aws
@@ -12,22 +12,23 @@ custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
+  config: ${file(./config/serverless/dev.yml)}
+  alexa:
+    vendorId: ${self:custom.config.AMAZON_VENDOR_ID}
+    clientId: ${self:custom.config.AMAZON_CLIENT_ID}
+    clientSecret: ${self:custom.config.AMAZON_CLIENT_SECRET}
+    localServerPort: 9000
+    skills:
+      - id: ${self:custom.config.AMAZON_SKILL_ID}
+        manifest: ${file(./config/alexa/skill.yml)}
+        models:
+          en-US: ${file(./config/alexa/models/en-US.json)}
 
 package:
   individually: true
 
 functions:
-  getStatus:
-    handler: src/handler.getStatus
-    events:
-      - http:
-          method: GET
-          path: /
-          cors: true
   getExchange:
-    handler: src/handler.getExchange
+    handler: src/handler.startExchange
     events:
-      - http:
-          method: GET
-          path: /exchange
-          cors: true
+      - alexaSkill: ${self:custom.config.AMAZON_SKILL_ID}

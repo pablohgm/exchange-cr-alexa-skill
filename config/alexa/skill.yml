@@ -1,0 +1,9 @@
+publishingInformation:
+  locales:
+    en-US:
+      name: Costa Rica Exchange
+apis:
+  custom:
+    endpoint:
+      uri: arn:aws:lambda:us-east-1:371733934268:function:exchange-cr-alexa-skill-dev-getExchange
+manifestVersion: '1.0'
